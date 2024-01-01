@@ -23,13 +23,15 @@ my_month = int(month)
 my_year = int(year)
 
 # Error message function
+def error_msg():
+    print("Error: invalid date")
+    sys.exit()
 
 # Check for 30 day months
 def thirty_day_month():
     global my_day
     if my_day > 30:
-        print("Error: invalid date")
-        sys.exit()
+        error_msg()
     else:
         return
 
@@ -37,12 +39,10 @@ def thirty_day_month():
 def leap_year():
     global my_year
     if my_year % 4 != 0:
-        print("Error: invalid date")
-        sys.exit()
+        error_msg()
     elif my_year % 100 == 0:
         if my_year % 400 != 0:
-            print("Error: invalid date")
-            sys.exit()
+            error_msg()
         else:
             return
     else:
@@ -53,8 +53,7 @@ if my_month == 2:
         if my_day == 29:
             leap_year()
         else:
-            print("Error: invalid date")
-            sys.exit()
+            error_msg()
 elif my_month == 4:
     thirty_day_month()
 elif my_month == 6:
